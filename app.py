@@ -6,6 +6,11 @@ from datetime import datetime
 
 from bottle import run , route, template
 
+@route('/static/<filepath:path>')
+def server_static(filepath):
+    return static_file(filepath, root='./static')
+
+
 @route('/')
 def index():
     now = datetime.now()
@@ -13,6 +18,9 @@ def index():
 
     return template('homepage', time=current_time)      
 
-
+@route('/football')
+@view('page1')
+def sport():
+    pass
 #main routine
 run(host='0.0.0.0', port=4000, reloader=True, debug=True)
