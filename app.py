@@ -1,10 +1,5 @@
 from bottle import route, run, template, view, static_file, request, redirect, error
 import requests
-from datetime import datetime
-
-#Using Bottle.py create an API tp AGIFY.IO
-
-from bottle import run , route, template
 
 @route('/static/<filepath:path>')
 def server_static(filepath):
@@ -13,10 +8,8 @@ def server_static(filepath):
 
 @route('/')
 def index():
-    now = datetime.now()
-    current_time = now.strftime("%H:%M:%S")
 
-    return template('homepage', time=current_time)      
+    return template('homepage')      
 
 @route('/football')
 @view('page1')
